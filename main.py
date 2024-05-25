@@ -1,5 +1,7 @@
 
 import nltk
+# Ensure necessary NLTK data is downloaded
+nltk.download('punkt')
 
 from textblob import TextBlob
 from newspaper import Article
