@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Summarizer</title>
+</head>
+<body>
+    <h1>Drop the link - I will respond with a summary</h1>
+    <input type="text" name="url" id="url">
+    <button>Summarize</button>
+    <div>
+        <p id="summary"></p>
+    </div>
+</body>
+<script>
+    const urlInput = document.getElementById('url')
+    const url = urlInput.textContent
+    
+    const formData = new FormData()
+    formData.append('url', url)
+    try {
+        res = await fetch('http://127.0.0.1:8000/summarize/', {
+            method: 'POST',
+            body: formData
+        })
+        const result = res.json()
+        document.getElementById('summary').textContent = JSON.stringify(result)
+    } catch (error) {
+        console.error(error)
+    }
+</script>
+</html>
+
+
+
+
